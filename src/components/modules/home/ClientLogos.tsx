@@ -13,7 +13,7 @@ export default function ClientLogos() {
     <section className="lg:px-31 px-4">
       <p className="text-[#202430] mb-4 text-lg">Companies we helped grow</p>
 
-      <div className="flex flex-wrap justify-between items-center gap-x-6 gap-y-4">
+      <div className="flex flex-wrap justify-between items-center gap-6">
         {logos.map((logo) => (
           <div
             key={logo.name}

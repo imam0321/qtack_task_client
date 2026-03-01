@@ -14,7 +14,7 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="lg:px-31 px-4 py-20">
+    <section className="lg:px-31 px-4 pb-10 pt-20">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between items-start md:mb-6 mb-2 gap-4">
         <h2 className="md:text-5xl text-[2rem] font-semibold font-clash-display">
