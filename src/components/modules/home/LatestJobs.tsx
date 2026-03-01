@@ -79,15 +79,31 @@ const latestJobs = [
 
 export default function LatestJobs() {
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 bg-slate-50/50 rounded-3xl mb-20">
-      <div className="flex justify-between items-end mb-12">
-        <h2 className="text-4xl font-bold font-[family-name:var(--font-clash-display)] text-slate-900">
-          Latest <span className="text-blue-600">jobs open</span>
+    <section className="lg:px-31 px-4 py-6">
+      
+       <div className="flex flex-col sm:flex-row justify-between items-start md:mb-6 mb-2 gap-4">
+        <h2 className="md:text-5xl text-[2rem] font-semibold font-clash-display">
+          Latest <span className="text-[#26A4FF]">jobs open</span>
         </h2>
-        <Link href="#" className="text-blue-600 font-bold flex items-center hover:underline group transition-all">
+
+        {/* Link */}
+        <Link
+          href="#"
+          className="text-[#4640DE] font-semibold md:flex items-center md:mt-2 hidden"
+        >
           Show all jobs
-          <svg className="w-4 h-4 ml-1 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path d="M14 5l7 7m0 0l-7 7m7-7H3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
+          <svg
+            className="w-4 h-4 ml-2"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M14 5l7 7m0 0l-7 7m7-7H3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth="2"
+            />
           </svg>
         </Link>
       </div>

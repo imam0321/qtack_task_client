@@ -51,7 +51,7 @@ export default function Categories() {
             className={`md:p-8 p-4 border ${
               cat.active
                 ? "bg-[#4640DE] text-white border-[#4640DE]"
-                : "bg-white text-[#25324B] border-slate-200"
+                : "bg-white text-[#25324B] border-[#D6DDEB]"
             }`}
           >
             {/* Mobile: flex row (icon + text + arrow), Desktop: flex-col */}
