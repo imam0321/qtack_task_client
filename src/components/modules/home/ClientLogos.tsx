@@ -1,32 +1,33 @@
 import Image from "next/image";
 
 export default function ClientLogos() {
+  const logos = [
+    { name: "Vodafone", src: "/icons/vodafone.svg" },
+    { name: "Intel", src: "/icons/intel.svg" },
+    { name: "Tesla", src: "/icons/tesla.svg" },
+    { name: "AMD", src: "/icons/amd.svg" },
+    { name: "Talkit", src: "/icons/talkit.svg" },
+  ];
+
   return (
-    <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <p className="text-slate-500 font-medium mb-10 text-center md:text-left">Companies we helped grow</p>
+    <section className="lg:px-31 px-4">
+      <p className="text-[#202430] mb-4 text-lg">Companies we helped grow</p>
 
-      <div className="flex flex-wrap justify-center md:justify-between items-center gap-10 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500">
-
-        <div className="relative w-32 h-12 flex items-center justify-center transition-transform hover:scale-110 duration-300">
-          <Image src="/icons/vodafone.svg" alt="Vodafone" width={120} height={40} className="object-contain" />
-        </div>
-
-        <div className="relative w-24 h-12 flex items-center justify-center transition-transform hover:scale-110 duration-300">
-          <Image src="/icons/intel.svg" alt="Intel" width={80} height={40} className="object-contain" />
-        </div>
-
-        <div className="relative w-32 h-12 flex items-center justify-center transition-transform hover:scale-110 duration-300">
-          <Image src="/icons/tesla.svg" alt="Tesla" width={120} height={40} className="object-contain" />
-        </div>
-
-        <div className="relative w-24 h-12 flex items-center justify-center transition-transform hover:scale-110 duration-300">
-          <Image src="/icons/amd.svg" alt="AMD" width={80} height={40} className="object-contain" />
-        </div>
-
-        <div className="relative w-24 h-12 flex items-center justify-center transition-transform hover:scale-110 duration-300">
-          <Image src="/icons/talkit.svg" alt="Talkit" width={80} height={40} className="object-contain" />
-        </div>
-
+      <div className="flex flex-wrap justify-between items-center gap-x-6 gap-y-4">
+        {logos.map((logo) => (
+          <div
+            key={logo.name}
+            className="h-8 w-28 flex items-center justify-center text-[#202430]"
+          >
+            <Image
+              src={logo.src}
+              alt={logo.name}
+              width={100}
+              height={40}
+              className="object-contain w-auto text-[#202430]"
+            />
+          </div>
+        ))}
       </div>
     </section>
   );

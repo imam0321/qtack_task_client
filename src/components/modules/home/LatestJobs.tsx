@@ -97,7 +97,7 @@ export default function LatestJobs() {
           <div key={index} className="bg-white p-6 rounded-2xl border border-slate-100 flex flex-col sm:flex-row items-center sm:items-start lg:items-center hover:shadow-xl hover:shadow-blue-900/5 transition-all duration-300 hover:-translate-y-1 group">
             <div className={`w-16 h-16 shrink-0 ${job.iconBg} rounded-2xl flex items-center justify-center mr-0 sm:mr-6 mb-4 sm:mb-0 transition-transform group-hover:scale-110 duration-300`}>
               {job.icon ? (
-                <Image src={job.icon} alt={job.company} width={32} height={32} className={`object-contain ${job.isSpin ? 'animate-spin-slow' : ''}`} />
+                <Image src={job.icon} alt={job.company} width={32} height={32} className={`object-contain w-auto h-auto ${job.isSpin ? 'animate-spin-slow' : ''}`} />
               ) : job.iconDot ? (
                 <div className={`w-8 h-8 rounded-lg ${job.iconDot}`}></div>
               ) : (

@@ -27,8 +27,7 @@ export default function Footer() {
   return (
     <footer className="relative bg-[#202430] text-slate-300 pt-16 pb-8 lg:px-31 px-4">
       {/* Subtle Background Glows */}
-
-      <div className="relative max-w-7xl mx-auto">
+      <div className="relative">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 mb-16">
           {/* Brand & Description */}
           <div className="lg:col-span-4">
@@ -116,7 +115,7 @@ export default function Footer() {
       </div>
 
       {/* Copyright Bottom Bar */}
-      <div className="relative max-w-7xl mx-auto mt-10">
+      <div className="relative mt-10">
         <div className="pt-8 border-t border-white flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-base font-medium text-white">
             2021 @ QuickHire. All rights reserved.

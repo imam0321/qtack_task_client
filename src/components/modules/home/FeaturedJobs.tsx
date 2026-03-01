@@ -96,7 +96,7 @@ export default function FeaturedJobs() {
   return (
     <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
       <div className="flex justify-between items-end mb-12">
-        <h2 className="text-4xl font-bold font-[family-name:var(--font-clash-display)] text-slate-900">
+        <h2 className="text-4xl font-bold font-clash-display text-slate-900">
           Featured <span className="text-blue-600">jobs</span>
         </h2>
         <Link href="#" className="text-blue-600 font-bold flex items-center hover:underline group transition-all">
@@ -113,7 +113,7 @@ export default function FeaturedJobs() {
             <div className="flex justify-between items-start mb-6">
               <div className={`w-12 h-12 flex items-center justify-center rounded-xl ${job.logoBg} transition-transform group-hover:scale-110`}>
                 {job.icon ? (
-                  <Image src={job.icon} alt={job.company} width={24} height={24} className="object-contain" />
+                  <Image src={job.icon} alt={job.company} width={24} height={24} className="object-contain w-auto h-auto" />
                 ) : job.logoDot ? (
                   <div className={`w-6 h-6 rounded-full ${job.logoDot}`}></div>
                 ) : (
