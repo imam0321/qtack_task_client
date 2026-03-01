@@ -29,7 +29,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${epilogue.variable} ${redHatDisplay.variable} font-[family-name:var(--font-red-hat-display)] antialiased`}
+        className={`${epilogue.variable} ${redHatDisplay.variable} font-red-hat-display antialiased`}
       >
         {children}
       </body>

@@ -7,7 +7,7 @@ import PromoBanner from "@/components/modules/home/PromoBanner";
 
 export default function HomePage() {
   return (
-    <main className="bg-white">
+    <main>
       <HeroSection />
       <ClientLogos />
       <Categories />
