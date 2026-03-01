@@ -19,7 +19,7 @@ export default function Footer() {
               <div className="w-10 h-10 flex items-center justify-center transition-transform group-hover:scale-105 duration-300">
                 <Image src="/logo.svg" alt="QuickHire Logo" width={40} height={40} className="w-10 h-10 object-contain" />
               </div>
-              <span className="text-2xl font-bold tracking-tight text-white font-[family-name:var(--font-clash-display)]">QuickHire</span>
+              <span className="text-2xl font-bold tracking-tight text-white font-sans">QuickHire</span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed max-w-sm mb-8 pr-4">
               Great platform for the job seeker that is passionate about startups. Find your dream job easier and launch an incredible career today.

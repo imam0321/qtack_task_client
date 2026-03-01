@@ -5,17 +5,19 @@
   --background: #ffffff;
   --foreground: #171717;
   --font-clash-display: "Clash Display", sans-serif;
+  /* Next.js variable is --font-red-hat-display */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-clash-display: "Clash Display", sans-serif;
+  --font-red-hat-display: "Red Hat Display", sans-serif;
+  --font-epilogue: "Epilogue", sans-serif;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-clash-display);
+  font-family: var(--font-epilogue);
 }
