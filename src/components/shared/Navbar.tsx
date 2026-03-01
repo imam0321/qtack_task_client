@@ -9,7 +9,7 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#FFFFFF]">
+    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#FFFFFF] lg:px-31 px-4">
       {/* Main Navbar Container */}
       <div className="max-w-7xl mx-auto">
         <div className="flex items-center justify-between h-19.5">
