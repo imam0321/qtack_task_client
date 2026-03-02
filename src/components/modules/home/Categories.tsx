@@ -14,10 +14,10 @@ const categories = [
 
 export default function Categories() {
   return (
-    <section className="lg:px-31 px-4 pb-10 pt-20">
+    <section className="lg:px-31 px-4 md:my-12 my-6">
       {/* Header */}
       <div className="flex flex-col sm:flex-row justify-between md:items-end items-start md:mb-6 mb-2 gap-4">
-        <h2 className="md:text-5xl text-[2rem] font-semibold font-clash-display">
+        <h2 className="md:text-5xl text-[1.7rem] font-semibold font-clash-display">
           Explore by <span className="text-[#26A4FF]">category</span>
         </h2>
         {/* Link */}

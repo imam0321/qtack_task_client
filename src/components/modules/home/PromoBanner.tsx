@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function PromoBanner() {
   return (
-    <section className="lg:px-31 px-4 py-6 relative">
+    <section className="lg:px-31 px-4 py-6 relative my-8">
       <div
         className="bg-[#4640DE] md:p-16 p-4 flex flex-col lg:flex-row justify-between items-center relative overflow-hidden"
         style={{

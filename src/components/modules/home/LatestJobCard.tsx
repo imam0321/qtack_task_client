@@ -22,12 +22,8 @@ const JOB_TYPE_COLOR: Record<string, string> = {
 
 export default function LatestJobCard({ job }: { job: IJob }) {
   return (
-    <div
-      className="flex flex-col bg-white gap-4 md:px-10 md:py-6 p-4 sm:flex-row sm:items-start"
-    >
-      <div
-        className="flex h-16 w-16 shrink-0 items-center justify-center sm:mr-4"
-      >
+    <div className="flex flex-col bg-white gap-4 md:px-10 md:py-6 p-4 sm:flex-row sm:items-start">
+      <div className="flex h-16 w-16 shrink-0 items-center justify-center sm:mr-4">
         {job.icon ? (
           <Image
             src={job.icon}
@@ -36,9 +32,11 @@ export default function LatestJobCard({ job }: { job: IJob }) {
             height={64}
             className="h-auto w-auto object-contain"
           />
-        ) : (<span className="flex h-16 w-16 items-center justify-center text-lg font-bold text-black bg-[#4640DE]/10">
-          {job.company[0]}
-        </span>)}
+        ) : (
+          <span className="flex h-16 w-16 items-center justify-center text-lg font-bold text-black bg-[#4640DE]/10">
+            {job.company[0]}
+          </span>
+        )}
       </div>
 
       <div className="flex-1 text-start">
@@ -68,5 +66,5 @@ export default function LatestJobCard({ job }: { job: IJob }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
