@@ -1,15 +1,19 @@
 import Link from "next/link";
 import Image from "next/image";
 import MobileNav from "./MobileNav";
+import { getCurrentUser } from "@/services/auth/auth";
+import LogoutButton from "./LogoutButton";
 
-export default function Navbar() {
+export default async function Navbar() {
+  const user = await getCurrentUser();
   const navLinks = [
     { name: "Find Jobs", href: "/find-jobs" },
     { name: "Browse Companies", href: "/browse-companies" },
+    { ...(user && user.role === "admin" ? { name: "Dashboard", href: "/admin/dashboard" } : { name: "Dashboard", href: user ? "/user/dashboard" : "" }) }
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full lg:px-31 px-4">
+    <header className="sticky top-0 z-50 w-full lg:px-31 px-4 bg-white/80 backdrop-blur-md">
       {/* Main Navbar Container */}
       <div className="flex items-center justify-between py-2">
         <div className="flex items-center space-x-8">
@@ -45,20 +49,29 @@ export default function Navbar() {
 
         {/* Desktop Auth Buttons */}
         <div className="hidden md:flex items-center space-x-2">
-          <Link href="/login" className="text-[#4640DE] font-bold px-6 py-3">
-            Login
-          </Link>
-          <div className="w-px h-10 bg-[#D6DDEB] mx-2"></div>
-          <Link
-            href="/signup"
-            className="bg-[#4640DE] text-white px-6 py-3 font-bold"
-          >
-            Sign Up
-          </Link>
+          {user ? (
+            <LogoutButton />
+          ) : (
+            <>
+              <Link
+                href="/login"
+                className="text-[#4640DE] font-bold px-6 py-3"
+              >
+                Login
+              </Link>
+              <div className="w-px h-10 bg-[#D6DDEB] mx-2"></div>
+              <Link
+                href="/signup"
+                className="bg-[#4640DE] text-white px-6 py-3 font-bold"
+              >
+                Sign Up
+              </Link>
+            </>
+          )}
         </div>
 
         {/* Mobile Menu Button */}
-        <MobileNav navLinks={navLinks} />
+        <MobileNav navLinks={navLinks} user={user} />
       </div>
     </header>
   );

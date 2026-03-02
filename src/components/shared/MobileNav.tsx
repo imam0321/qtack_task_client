@@ -1,14 +1,17 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 "use client";
 
 import Link from "next/link";
 import Image from "next/image";
 import { useState } from "react";
+import LogoutButton from "./LogoutButton";
 
 interface MobileNavProps {
   navLinks: { name: string; href: string }[];
+  user?: any;
 }
 
-export default function MobileNav({ navLinks }: MobileNavProps) {
+export default function MobileNav({ navLinks, user }: MobileNavProps) {
   const [open, setOpen] = useState(false);
 
   return (
@@ -60,21 +63,30 @@ export default function MobileNav({ navLinks }: MobileNavProps) {
           </nav>
 
           <div className="pt-8 border-t border-slate-200 flex flex-col space-y-4">
-            <Link
-              href="/login"
-              className="text-[#4640DE] font-bold text-center py-2"
-            >
-              Login
-            </Link>
-            <Link
-              href="/signup"
-              className="bg-[#4640DE] text-white py-3 text-center font-bold"
-            >
-              Sign Up
-            </Link>
+            {user ? (
+              <LogoutButton />
+            ) : (
+              <>
+                <div className="flex justify-center">
+                  <Link
+                    href="/login"
+                    className="text-[#4640DE] font-bold px-6 py-3"
+                  >
+                    Login
+                  </Link>
+                </div>
+                <Link
+                  href="/signup"
+                  className="bg-[#4640DE] text-white py-3 text-center font-bold"
+                >
+                  Sign Up
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}
     </>
   );
 }
+

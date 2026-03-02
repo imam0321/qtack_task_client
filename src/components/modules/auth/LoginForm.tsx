@@ -56,7 +56,6 @@ export default function LoginForm({ redirectPath }: { redirectPath?: string }) {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
-          // defaultValue={state?.formData?.email || ""}
           disabled={isPending}
           className="w-full px-4 py-3 border border-[#D6DDEB] focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE] outline-none transition-all font-epilogue"
         />
@@ -76,7 +75,6 @@ export default function LoginForm({ redirectPath }: { redirectPath?: string }) {
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Enter password"
           required
-          // defaultValue={state?.formData?.password || ""}
           disabled={isPending}
           className="w-full px-4 py-3 border border-[#D6DDEB] focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE] outline-none transition-all font-epilogue"
         />

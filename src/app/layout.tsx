@@ -3,8 +3,8 @@ import { Epilogue, Red_Hat_Display, Inter } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "sonner";
 import { Suspense } from "react";
-import LoginSuccessToast from "@/components/shared/LogoutSuccessToast";
-import LogoutSuccessToast from "@/components/shared/LoginSuccessToast";
+import LoginSuccessToast from "@/components/shared/LoginSuccessToast";
+import LogoutSuccessToast from "@/components/shared/LogoutSuccessToast";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",

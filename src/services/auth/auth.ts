@@ -6,7 +6,7 @@ import { zodValidator } from "@/lib/zodValidator";
 import { loginValidationZodSchema } from "@/zod";
 import { parse } from "cookie"
 import jwt, { JwtPayload } from "jsonwebtoken";
-import { setCookie } from "./tokenHandlers";
+import { setCookie, deleteCookie, getCookie } from "./tokenHandlers";
 import { getDefaultDashboardRoute, isValidRedirectForRole, UserRole } from "@/lib/auth.utils";
 import { redirect } from "next/navigation";
 
@@ -123,3 +123,21 @@ export const loginUser = async (_currentState: any, formData: FormData): Promise
     }
   }
 }
+
+export const logoutUser = async () => {
+  await deleteCookie("accessToken");
+  redirect("/login?loggedOut=true");
+};
+
+export const getCurrentUser = async () => {
+  const token = await getCookie("accessToken");
+  if (!token) return null;
+
+  try {
+    const decoded = jwt.decode(token) as JwtPayload;
+    return decoded;
+  } catch {
+    return null;
+  }
+};
+
