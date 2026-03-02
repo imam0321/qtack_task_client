@@ -11,7 +11,7 @@ export interface IJob {
   icon?: string;
 }
 
-const featuredJobs: IJob[] = [
+export const featuredJobs: IJob[] = [
   { title: "Email Marketing", company: "Revolut", location: "Madrid, Spain", type: "Full Time", description: "Revolut is looking for Email Marketing to help team ma ...", tags: ["Marketing", "Design"] },
   { title: "Brand Designer", company: "Dropbox", location: "San Francisco, US", type: "Full Time", icon: "/icons/vodafone.svg", description: "Dropbox is looking for Brand Designer to help the team t ...", tags: ["Design", "Business"] },
   { title: "Email Marketing", company: "Pitch", location: "Berlin, Germany", type: "Full Time", description: "Pitch is looking for Customer Manager to join marketing t ...", tags: ["Marketing"] },
