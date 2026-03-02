@@ -1,10 +1,10 @@
 import type { Metadata } from "next";
-import {
-  Epilogue,
-  Red_Hat_Display,
-  Inter,
-} from "next/font/google";
+import { Epilogue, Red_Hat_Display, Inter } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "sonner";
+import { Suspense } from "react";
+import LoginSuccessToast from "@/components/shared/LogoutSuccessToast";
+import LogoutSuccessToast from "@/components/shared/LoginSuccessToast";
 
 const epilogue = Epilogue({
   variable: "--font-epilogue",
@@ -18,7 +18,6 @@ const redHatDisplay = Red_Hat_Display({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
-
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
@@ -27,7 +26,8 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: "QuickHire - Discover your dream job",
-  description: "Great platform for the job seeker that passionate about startups.",
+  description:
+    "Great platform for the job seeker that passionate about startups.",
 };
 
 export default function RootLayout({
@@ -41,6 +41,11 @@ export default function RootLayout({
         className={`${epilogue.variable} ${redHatDisplay.variable} ${inter.variable} font-epilogue antialiased`}
       >
         {children}
+        <Toaster position="top-right" richColors />
+        <Suspense fallback={null}>
+          <LoginSuccessToast />
+          <LogoutSuccessToast />
+        </Suspense>
       </body>
     </html>
   );
