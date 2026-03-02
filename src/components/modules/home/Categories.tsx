@@ -16,11 +16,10 @@ export default function Categories() {
   return (
     <section className="lg:px-31 px-4 pb-10 pt-20">
       {/* Header */}
-      <div className="flex flex-col sm:flex-row justify-between items-start md:mb-6 mb-2 gap-4">
+      <div className="flex flex-col sm:flex-row justify-between md:items-end items-start md:mb-6 mb-2 gap-4">
         <h2 className="md:text-5xl text-[2rem] font-semibold font-clash-display">
           Explore by <span className="text-[#26A4FF]">category</span>
         </h2>
-
         {/* Link */}
         <Link
           href="#"
@@ -48,11 +47,10 @@ export default function Categories() {
         {categories.map((cat, index) => (
           <div
             key={index}
-            className={`md:p-8 p-4 border ${
-              cat.active
-                ? "bg-[#4640DE] text-white border-[#4640DE]"
-                : "bg-white text-[#25324B] border-[#D6DDEB]"
-            }`}
+            className={`md:p-8 p-4 border ${cat.active
+              ? "bg-[#4640DE] text-white border-[#4640DE]"
+              : "bg-white text-[#25324B] border-[#D6DDEB]"
+              }`}
           >
             {/* Mobile: flex row (icon + text + arrow), Desktop: flex-col */}
             <div className="flex justify-between items-center sm:flex-col sm:items-start gap-4">

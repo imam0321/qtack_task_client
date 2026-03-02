@@ -9,6 +9,7 @@ import "./globals.css";
 const epilogue = Epilogue({
   variable: "--font-epilogue",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 const redHatDisplay = Red_Hat_Display({
@@ -21,6 +22,7 @@ const redHatDisplay = Red_Hat_Display({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800", "900"],
 });
 
 export const metadata: Metadata = {

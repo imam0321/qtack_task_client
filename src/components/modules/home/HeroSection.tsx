@@ -8,7 +8,7 @@ export default function HeroSection() {
 
       <div className="lg:px-31 px-4 py-6 flex flex-col lg:flex-row items-center relative z-10">
         <div className="lg:w-1/2 z-10 text-center lg:text-left">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-extrabold leading-tight mb-6 text-slate-900 font-clash-display tracking-tight">
+          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-slate-900 font-clash-display tracking-tight">
             Discover <br className="hidden lg:block" /> more than <br className="hidden lg:block" />
             <span className="text-blue-600 relative inline-block">
               5000+ Jobs

@@ -4,16 +4,15 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --font-clash-display: "Clash Display", sans-serif;
-  /* Next.js variable is --font-red-hat-display */
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-clash-display: "Clash Display", sans-serif;
-  --font-red-hat-display: "Red Hat Display", sans-serif;
-  --font-epilogue: "Epilogue", sans-serif;
+  --font-clash-display: "Clash Display", "sans-serif";
+  --font-red-hat-display: var(--font-red-hat-display), "sans-serif";
+  --font-epilogue: var(--font-epilogue), "sans-serif";
+  --font-inter: var(--font-inter), "sans-serif";
 }
 
 body {
@@ -24,13 +23,34 @@ body {
 
 /* Font utility classes to use fonts by name (fallbacks provided) */
 .font-epilogue {
-  font-family: var(--font-epilogue, "Epilogue", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial);
+  font-family: var(
+    --font-epilogue,
+    "Epilogue",
+    system-ui,
+    -apple-system,
+    "Segoe UI",
+    Roboto,
+    "Helvetica Neue",
+    Arial
+  );
 }
 .font-red-hat-display {
-  font-family: var(--font-red-hat-display, "Red Hat Display", system-ui, -apple-system, "Segoe UI");
+  font-family: var(
+    --font-red-hat-display,
+    "Red Hat Display",
+    system-ui,
+    -apple-system,
+    "Segoe UI"
+  );
 }
 .font-clash-display {
-  font-family: var(--font-clash-display, "Clash Display", system-ui, -apple-system, "Segoe UI");
+  font-family: var(
+    --font-clash-display,
+    "Clash Display",
+    system-ui,
+    -apple-system,
+    "Segoe UI"
+  );
 }
 .font-inter {
   font-family: var(--font-inter, "Inter", system-ui, -apple-system, "Segoe UI");

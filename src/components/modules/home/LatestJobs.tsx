@@ -80,8 +80,8 @@ const latestJobs = [
 export default function LatestJobs() {
   return (
     <section className="lg:px-31 px-4 py-6">
-      
-       <div className="flex flex-col sm:flex-row justify-between items-start md:mb-6 mb-2 gap-4">
+
+      <div className="flex flex-col sm:flex-row justify-between md:items-end items-start md:mb-6 mb-2 gap-4">
         <h2 className="md:text-5xl text-[2rem] font-semibold font-clash-display">
           Latest <span className="text-[#26A4FF]">jobs open</span>
         </h2>
