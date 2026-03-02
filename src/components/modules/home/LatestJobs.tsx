@@ -20,7 +20,8 @@ export default function LatestJobs() {
             src="/patterns/pattern-2.jpg"
             alt="background pattern"
             fill
-            className="object-right object-contain"
+            sizes="(max-width: 768px) 100vw, 50vw"
+            className="object-right object-contain h-auto w-auto"
           />
         </div>
       </div>

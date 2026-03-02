@@ -15,7 +15,8 @@ export default function CommonLayout({
           src="/patterns/pattern-1.jpg"
           alt="background pattern"
           fill
-          className="object-cover object-right"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          className="object-cover object-right h-auto w-auto"
           priority
         />
       </div>

@@ -15,6 +15,8 @@ export default function HeroSection() {
                   src="/patterns/hero-right-pattern.png"
                   alt="decorative underline"
                   fill
+                  sizes="100vw"
+                  className="h-auto w-auto"
                 />
               </span>
             </span>

@@ -49,7 +49,8 @@ export default function PromoBanner() {
             src="/images/3.1 Dashboard Company.jpg"
             alt="Dashboard Interface"
             fill
-            className="object-contain"
+            sizes="(max-width: 1024px) 100vw, 50vw"
+            className="object-contain h-auto w-auto"
             priority
           />
         </div>
