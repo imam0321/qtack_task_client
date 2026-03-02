@@ -2,96 +2,131 @@ import Image from "next/image";
 
 export default function HeroSection() {
   return (
-    <section className="relative overflow-hidden bg-white">
-      <div className="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-blue-50 opacity-50 blur-3xl pointer-events-none"></div>
-      <div className="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-blue-50 opacity-50 blur-3xl pointer-events-none"></div>
-
-      <div className="lg:px-31 px-4 py-6 flex flex-col lg:flex-row items-center relative z-10">
-        <div className="lg:w-1/2 z-10 text-center lg:text-left">
-          <h1 className="text-5xl md:text-6xl lg:text-7xl font-bold leading-tight mb-6 text-slate-900 font-clash-display tracking-tight">
-            Discover <br className="hidden lg:block" /> more than <br className="hidden lg:block" />
-            <span className="text-blue-600 relative inline-block">
+    <section className="">
+      <div className="relative z-10 flex flex-col items-center px-4 lg:flex-row lg:px-31">
+        {/* Left Content */}
+        <div className="lg:w-1/2 text-center lg:text-left">
+          <h1 className="font-clash-display text-5xl font-semibold text-[#25324B] md:text-6xl lg:text-7xl">
+            Discover <br className="hidden lg:block" /> more than{" "}
+            <br className="hidden lg:block" />
+            <span className="relative inline-block font-clash-display font-semibold text-[#26A4FF]">
               5000+ Jobs
-              <svg className="absolute w-full h-3 -bottom-1 left-0 text-blue-200" viewBox="0 0 200 12" fill="none" preserveAspectRatio="none">
-                <path d="M2.00035 9.00005C55.0004 2.50005 131.001 -1.49995 198.001 9.00005" stroke="currentColor" strokeWidth="4" strokeLinecap="round" />
-              </svg>
+              <span className="absolute -bottom-6 left-0 h-6 w-full py-4">
+                <Image
+                  src="/patterns/hero-right-pattern.png"
+                  alt="decorative underline"
+                  fill
+                />
+              </span>
             </span>
           </h1>
-          <p className="text-slate-500 text-lg md:text-xl mb-10 max-w-lg mx-auto lg:mx-0 leading-relaxed">
-            Great platform for the job seeker that is searching for new career heights and passionate about startups.
+
+          <p className="mt-10 mb-6 font-epilogue text-lg text-[#515B6F] md:text-xl">
+            Great platform for the job seeker that is searching for new career
+            heights and passionate about startups.
           </p>
 
           {/* Search Bar */}
-          <div className="bg-white p-2.5 rounded-2xl shadow-xl shadow-blue-900/5 border border-slate-100 flex flex-col md:flex-row items-center max-w-2xl mx-auto lg:mx-0 transition-shadow duration-300 hover:shadow-2xl hover:shadow-blue-900/10">
-            <div className="w-full md:flex-1 flex items-center px-4 py-3 md:py-2 border-b md:border-b-0 md:border-r border-slate-100 group">
-              <svg className="w-5 h-5 text-slate-400 mr-3 group-focus-within:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
+          <div className="mx-auto flex max-w-2xl flex-col items-center rounded-2xl border border-slate-100 bg-white p-2.5 shadow-xl shadow-blue-900/5 transition-shadow duration-300 hover:shadow-2xl hover:shadow-blue-900/10 md:flex-row lg:mx-0">
+            <div className="group flex w-full items-center border-b border-slate-100 px-4 py-3 md:flex-1 md:border-b-0 md:border-r md:py-2">
+              <svg
+                className="mr-3 h-5 w-5 text-slate-400 transition-colors group-focus-within:text-blue-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
               </svg>
-              <input className="border-none focus:ring-0 w-full text-base text-slate-900 placeholder:text-slate-400 bg-transparent outline-none" placeholder="Job title or keyword" type="text" />
+              <input
+                type="text"
+                placeholder="Job title or keyword"
+                className="w-full border-none bg-transparent text-base text-slate-900 placeholder:text-slate-400 outline-none focus:ring-0"
+              />
             </div>
 
-            <div className="w-full md:flex-1 flex items-center px-4 py-3 md:py-2 group">
-              <svg className="w-5 h-5 text-slate-400 mr-3 group-focus-within:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
-                <path d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"></path>
+            <div className="group flex w-full items-center px-4 py-3 md:flex-1 md:py-2">
+              <svg
+                className="mr-3 h-5 w-5 text-slate-400 transition-colors group-focus-within:text-blue-500"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
+                <path
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
               </svg>
-              <select className="border-none focus:ring-0 w-full text-base text-slate-900 bg-transparent outline-none cursor-pointer appearance-none">
+
+              <select className="w-full cursor-pointer appearance-none border-none bg-transparent text-base text-slate-900 outline-none focus:ring-0">
                 <option value="Florence, Italy">Florence, Italy</option>
                 <option value="Remote">Remote</option>
                 <option value="New York, USA">New York, USA</option>
                 <option value="London, UK">London, UK</option>
               </select>
-              <svg className="w-4 h-4 text-slate-400 ml-2 pointer-events-none" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
+
+              <svg
+                className="ml-2 h-4 w-4 pointer-events-none text-slate-400"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  d="M19 9l-7 7-7-7"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth="2"
+                />
               </svg>
             </div>
 
-            <button className="w-full md:w-auto bg-blue-600 text-white px-8 py-3.5 rounded-xl font-semibold hover:bg-blue-700 transition-all active:scale-95 shadow-md shadow-blue-500/20 whitespace-nowrap mt-2 md:mt-0">
+            <button className="mt-2 w-full whitespace-nowrap rounded-xl bg-blue-600 px-8 py-3.5 font-semibold text-white shadow-md shadow-blue-500/20 transition-all hover:bg-blue-700 active:scale-95 md:mt-0 md:w-auto">
               Search my job
             </button>
           </div>
 
-          <p className="mt-6 text-sm text-slate-500 font-medium">
-            <span className="text-slate-400">Popular: </span>
-            <span className="cursor-pointer hover:text-blue-600 transition-colors">UI Designer</span>,
-            <span className="cursor-pointer hover:text-blue-600 transition-colors ml-1">UX Researcher</span>,
-            <span className="cursor-pointer hover:text-blue-600 transition-colors ml-1">Android</span>,
-            <span className="cursor-pointer hover:text-blue-600 transition-colors ml-1">Admin</span>
+          <p className="mt-6 font-medium font-epilogue text-[#202430]">
+            <span>Popular: </span>
+            <span>
+              UI Designer
+            </span>
+            ,{" "}
+            <span>
+              UX Researcher
+            </span>
+            ,{" "}
+            <span>
+              Android
+            </span>
+            ,{" "}
+            <span>
+              Admin
+            </span>
           </p>
         </div>
 
-        <div className="lg:w-1/2 mt-20 lg:mt-0 relative flex justify-center lg:justify-end w-full">
-          <div className="relative w-full max-w-[440px] aspect-[4/5]">
+        {/* Right Image */}
+        <div className="relative mt-20 flex w-full justify-center lg:mt-0 lg:w-1/2 lg:justify-end">
+          <div className="relative aspect-4/5 w-full max-w-[440px]">
             <Image
               src="/images/hero-image.jpg"
-              alt="Professional Woman smiling"
+              alt="Professional woman smiling"
               fill
-              className="rounded-3xl shadow-2xl object-cover z-20 relative"
               priority
+              className="relative z-20 object-cover p-6"
             />
-
-            <div className="absolute -bottom-8 -left-8 w-40 h-40 bg-blue-100 rounded-full z-10 animate-pulse-slow"></div>
-            <div className="absolute -top-8 -right-8 w-32 h-32 border-[6px] border-dashed border-blue-100 rounded-full z-10 animate-spin-slow"></div>
-
-            <div className="absolute top-12 -left-12 bg-white p-4 rounded-xl shadow-xl z-30 flex items-center space-x-3 animate-float border border-slate-50">
-              <div className="w-10 h-10 bg-green-100 rounded-full flex items-center justify-center text-green-600">
-                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M5 13l4 4L19 7"></path></svg>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-slate-900">Job Offer</p>
-                <p className="text-xs text-slate-500">Accepted</p>
-              </div>
-            </div>
-
-            <div className="absolute bottom-20 -right-8 bg-white p-4 rounded-xl shadow-xl z-30 flex items-center space-x-3 animate-float-delayed border border-slate-50">
-              <div className="w-10 h-10 bg-blue-100 rounded-full flex items-center justify-center text-blue-600">
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
-              </div>
-              <div>
-                <p className="text-sm font-bold text-slate-900">10k+ Roles</p>
-                <p className="text-xs text-slate-500">Available now</p>
-              </div>
-            </div>
           </div>
         </div>
       </div>
