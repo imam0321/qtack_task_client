@@ -10,7 +10,7 @@ export default function ClientLogos() {
   ];
 
   return (
-    <section className="lg:px-31 px-4">
+    <section className="lg:px-31 px-4 my-10">
       <p className="text-[#202430] mb-4 text-lg">Companies we helped grow</p>
 
       <div className="flex flex-wrap justify-between items-center gap-6">

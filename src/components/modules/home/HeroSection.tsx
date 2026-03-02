@@ -3,12 +3,11 @@ import Image from "next/image";
 export default function HeroSection() {
   return (
     <section className="">
-      <div className="relative z-10 flex flex-col items-center px-4 lg:flex-row lg:px-31">
+      <div className="relative z-10 lg:flex justify-between lg:items-center px-4 py-8 lg:px-31">
         {/* Left Content */}
-        <div className="lg:w-1/2 text-center lg:text-left">
+        <div className="lg:w-1/2 text-left">
           <h1 className="font-clash-display text-5xl font-semibold text-[#25324B] md:text-6xl lg:text-7xl">
-            Discover <br className="hidden lg:block" /> more than{" "}
-            <br className="hidden lg:block" />
+            Discover <br /> more than <br />
             <span className="relative inline-block font-clash-display font-semibold text-[#26A4FF]">
               5000+ Jobs
               <span className="absolute -bottom-6 left-0 h-6 w-full py-4">
@@ -25,7 +24,6 @@ export default function HeroSection() {
             Great platform for the job seeker that is searching for new career
             heights and passionate about startups.
           </p>
-
           {/* Search Bar */}
           <div className="mx-auto flex max-w-2xl flex-col items-center rounded-2xl border border-slate-100 bg-white p-2.5 shadow-xl shadow-blue-900/5 transition-shadow duration-300 hover:shadow-2xl hover:shadow-blue-900/10 md:flex-row lg:mx-0">
             <div className="group flex w-full items-center border-b border-slate-100 px-4 py-3 md:flex-1 md:border-b-0 md:border-r md:py-2">
@@ -99,33 +97,25 @@ export default function HeroSection() {
 
           <p className="mt-6 font-medium font-epilogue text-[#202430]">
             <span>Popular: </span>
-            <span>
-              UI Designer
-            </span>
-            ,{" "}
-            <span>
-              UX Researcher
-            </span>
-            ,{" "}
-            <span>
-              Android
-            </span>
-            ,{" "}
-            <span>
-              Admin
-            </span>
+            <span>UI Designer</span>, <span>UX Researcher</span>,{" "}
+            <span>Android</span>, <span>Admin</span>
           </p>
         </div>
 
         {/* Right Image */}
-        <div className="relative mt-20 flex w-full justify-center lg:mt-0 lg:w-1/2 lg:justify-end">
-          <div className="relative aspect-4/5 w-full max-w-[440px]">
+        <div className="hidden lg:flex lg:w-1/2 justify-center items-center">
+          <div className="relative w-full max-w-121 aspect-4/5 overflow-hidden">
             <Image
-              src="/images/hero-image.jpg"
-              alt="Professional woman smiling"
+              src="/images/hero-image.svg"
+              alt="Hero Image"
               fill
               priority
-              className="relative z-20 object-cover p-6"
+              className="z-20 object-contain"
+              sizes="50vw"
+              style={{
+                clipPath:
+                  "polygon(0 0, 100% 0, 100% 0, 100% 82%, 53% 100%, 0 100%, 0 100%, 0 0)",
+              }}
             />
           </div>
         </div>

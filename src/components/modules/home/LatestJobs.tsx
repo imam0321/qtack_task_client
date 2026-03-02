@@ -15,7 +15,7 @@ export default function LatestJobs() {
     >
       {/* Background Pattern (no padding, full bleed) */}
       <div className="pointer-events-none absolute inset-0 z-0">
-        <div className="absolute right-0 top-0 h-full w-1/2 opacity-20">
+        <div className="absolute right-0 top-0 h-full w-1/2">
           <Image
             src="/patterns/pattern-2.jpg"
             alt="background pattern"

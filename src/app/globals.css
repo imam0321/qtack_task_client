@@ -1,57 +1,26 @@
-@import url("https://api.fontshare.com/v2/css?f[]=clash-display@200,300,400,500,600,700&display=swap");
+@import url("https://api.fontshare.com/v2/css?f[]=clash-display&display=swap");
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  /* Fonts Definition */
+  --font-clash-display: "Clash Display", system-ui, sans-serif;
+  --font-redhat: "Red Hat Display", system-ui, sans-serif;
+  --font-epilogue: "Epilogue", system-ui, sans-serif;
+  --font-inter: "Inter", system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-clash-display: "Clash Display", "sans-serif";
-  --font-red-hat-display: var(--font-red-hat-display), "sans-serif";
-  --font-epilogue: var(--font-epilogue), "sans-serif";
-  --font-inter: var(--font-inter), "sans-serif";
+/* Helper class for utilities since Tailwind doesn't include this custom font */
+@layer utilities {
+  .font-clash-display {
+    font-family: var(--font-clash-display) !important;
+  }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-epilogue);
-}
-
-/* Font utility classes to use fonts by name (fallbacks provided) */
-.font-epilogue {
-  font-family: var(
-    --font-epilogue,
-    "Epilogue",
-    system-ui,
-    -apple-system,
-    "Segoe UI",
-    Roboto,
-    "Helvetica Neue",
-    Arial
-  );
-}
-.font-red-hat-display {
-  font-family: var(
-    --font-red-hat-display,
-    "Red Hat Display",
-    system-ui,
-    -apple-system,
-    "Segoe UI"
-  );
-}
-.font-clash-display {
-  font-family: var(
-    --font-clash-display,
-    "Clash Display",
-    system-ui,
-    -apple-system,
-    "Segoe UI"
-  );
-}
-.font-inter {
-  font-family: var(--font-inter, "Inter", system-ui, -apple-system, "Segoe UI");
+/* Base Styles */
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-epilogue);
+  }
 }

@@ -9,9 +9,9 @@ export default function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full backdrop-blur-md bg-[#FFFFFF] lg:px-31 px-4">
+    <header className="sticky top-0 z-50 w-full lg:px-31 px-4">
       {/* Main Navbar Container */}
-      <div className="flex items-center justify-between h-19.5">
+      <div className="flex items-center justify-between py-2">
         <div className="flex items-center space-x-8">
           {/* Logo */}
           <Link href="/" className="flex items-center space-x-1 group">
