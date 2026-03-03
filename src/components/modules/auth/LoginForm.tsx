@@ -30,10 +30,10 @@ export default function LoginForm({ redirectPath }: { redirectPath?: string }) {
     }
   }, [state]);
 
-  // const fillDemoUser = (role: "admin" | "user") => {
-  //   setEmail(demoUsers[role].email);
-  //   setPassword(demoUsers[role].password);
-  // };
+  const fillDemoUser = () => {
+    setEmail("admin@gmail.com");
+    setPassword("123456789");
+  };
 
   return (
     <form
@@ -86,6 +86,14 @@ export default function LoginForm({ redirectPath }: { redirectPath?: string }) {
         className="w-full bg-[#4640DE] text-white py-4 font-bold hover:bg-[#3b36c4] transition-colors font-epilogue disabled:opacity-60"
       >
         {isPending ? "Signing in..." : "Login"}
+      </button>
+
+      <button
+        type="button"
+        onClick={fillDemoUser}
+        className="w-full border border-[#4640DE] text-[#4640DE] py-3 font-bold hover:bg-[#4640DE]/5 transition-colors font-epilogue"
+      >
+        Admin Demo
       </button>
 
       <p className="text-center text-[#515B6F] font-epilogue">

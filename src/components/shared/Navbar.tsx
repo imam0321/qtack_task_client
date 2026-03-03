@@ -9,7 +9,7 @@ export default async function Navbar() {
   const navLinks = [
     { name: "Find Jobs", href: "/find-jobs" },
     { name: "Browse Companies", href: "/browse-companies" },
-    { ...(user && user.role === "admin" ? { name: "Dashboard", href: "/admin/dashboard" } : { name: "Dashboard", href: user ? "/user/dashboard" : "" }) }
+    ...(user ? [{ name: "Dashboard", href: "/admin/dashboard" }] : []),
   ];
 
   return (
