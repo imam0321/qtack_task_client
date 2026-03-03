@@ -31,10 +31,18 @@ export interface IJob {
   updatedAt?: string;
 }
 
+export interface TPaginationMeta {
+  page: number;
+  limit: number;
+  totalPage: number;
+  totalDocument: number;
+}
+
 export interface TActionResponse<T = unknown, F = any> {
   success: boolean;
   message: string;
   data?: T;
+  meta?: TPaginationMeta;
   errors?: { field: string; message: string }[];
   formData?: F;
 }
