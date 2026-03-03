@@ -8,12 +8,25 @@ export const loginValidationZodSchema = z.object({
 });
 
 export const createJobValidationZodSchema = z.object({
-  title: z.string().min(1, { message: "Title is required" }),
-  company: z.string().min(1, { message: "Company is required" }),
+  title: z.string().min(3, { message: "Job title must be at least 3 characters" }),
+  company: z.string().min(2, { message: "Company name must be at least 2 characters" }),
   location: z.string().min(1, { message: "Location is required" }),
-  description: z.string().min(1, { message: "Description is required" }),
+  description: z.string().min(20, { message: "Job description must be at least 20 characters" }),
   jobType: z.enum(["Full Time", "Part Time", "Remote", "Contract", "Internship"], {
-    message: "Invalid job type",
+    message: "Please select a valid job type",
   }),
-  category: z.array(z.string()).min(1, { message: "At least one category is required" }),
+  category: z
+    .array(
+      z.enum([
+        "Design",
+        "Sales",
+        "Marketing",
+        "Finance",
+        "Technology",
+        "Engineering",
+        "Business",
+        "Human Resources",
+      ])
+    )
+    .min(1, { message: "At least one category is required" }),
 });

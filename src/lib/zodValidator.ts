@@ -1,6 +1,10 @@
 import { ZodType } from "zod";
 
-export const zodValidator = <T>(payload: unknown, schema: ZodType<T>) => {
+export type ValidationResult<T> =
+  | { success: true; data: T; errors?: never }
+  | { success: false; data?: never; errors: { field: string; message: string }[] };
+
+export const zodValidator = <T>(payload: unknown, schema: ZodType<T>): ValidationResult<T> => {
   const validatedPayload = schema.safeParse(payload);
 
   if (!validatedPayload.success) {
@@ -15,6 +19,6 @@ export const zodValidator = <T>(payload: unknown, schema: ZodType<T>) => {
 
   return {
     success: true,
-    data: validatedPayload.data as T,
+    data: validatedPayload.data,
   };
 };

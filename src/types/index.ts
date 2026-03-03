@@ -26,16 +26,17 @@ export interface IJob {
   location?: string;
   jobType?: string;
   category?: string[];
+  icon?: string;
   createdAt?: string;
   updatedAt?: string;
 }
 
-export interface TActionResponse<T = unknown> {
+export interface TActionResponse<T = unknown, F = any> {
   success: boolean;
   message: string;
   data?: T;
   errors?: { field: string; message: string }[];
-  formData?: unknown;
+  formData?: F;
 }
 
 

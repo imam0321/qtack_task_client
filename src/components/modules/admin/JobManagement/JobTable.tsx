@@ -1,5 +1,3 @@
-"use client";
-
 import { IJob } from "@/types";
 import { Edit, Trash2, MapPin, Briefcase } from "lucide-react";
 
@@ -10,7 +8,7 @@ interface JobTableProps {
 export default function JobTable({ jobs }: JobTableProps) {
   if (!jobs || jobs.length === 0) {
     return (
-      <div className="bg-white rounded-3xl border border-slate-100 p-12 text-center shadow-sm">
+      <div className="bg-white rounded-3xl border border-slate-100 p-6 text-center shadow-sm">
         <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-300">
           <Briefcase size={32} />
         </div>
@@ -52,14 +50,17 @@ export default function JobTable({ jobs }: JobTableProps) {
                 </td>
                 <td className="px-6 py-5">
                   <span className={`inline-flex items-center px-2.5 py-1 rounded-lg text-xs font-bold ${job.jobType === "Full Time" ? "bg-indigo-50 text-indigo-600" :
-                      job.jobType === "Remote" ? "bg-green-50 text-green-600" :
-                        "bg-slate-100 text-slate-600"
+                    job.jobType === "Remote" ? "bg-green-50 text-green-600" :
+                      "bg-slate-100 text-slate-600"
                     }`}>
                     {job.jobType}
                   </span>
                 </td>
                 <td className="px-6 py-5">
-                  <span className="text-sm text-slate-500 font-medium whitespace-nowrap">
+                  <span
+                    className="text-sm text-slate-500 font-medium whitespace-nowrap"
+                    suppressHydrationWarning
+                  >
                     {job.createdAt ? new Date(job.createdAt).toLocaleDateString() : "N/A"}
                   </span>
                 </td>

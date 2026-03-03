@@ -6,10 +6,7 @@ import { zodValidator } from "@/lib/zodValidator";
 import { createJobValidationZodSchema } from "@/zod";
 import { revalidatePath } from "next/cache";
 
-export const createJob = async (
-  _currentState: any,
-  formData: FormData
-): Promise<any> => {
+export const createJob = async (_currentState: any, formData: FormData): Promise<any> => {
   try {
     const payload = {
       title: formData.get("title"),
@@ -22,50 +19,40 @@ export const createJob = async (
 
     const validatedPayload = zodValidator(payload, createJobValidationZodSchema);
 
-    if (!validatedPayload.success && validatedPayload.errors) {
+    if (!validatedPayload.success) {
       return {
         success: false,
-        message: "Validation failed",
+        message: validatedPayload.errors ? "Validation failed" : "Internal validation error",
         formData: payload,
         errors: validatedPayload.errors,
       };
     }
 
-    if (!validatedPayload.data) {
-      return {
-        success: false,
-        message: "Validation failed",
-        formData: payload,
-      };
+    const { data } = validatedPayload;
+
+    const submitData = new FormData();
+    submitData.append("data", JSON.stringify(data));
+
+    const file = formData.get("file");
+    if (file instanceof File && file.size > 0) {
+      submitData.append("file", file);
     }
 
-    const res = await serverFetch.post("/jobs", {
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(validatedPayload.data),
-    });
+    // Backend implicitly expects category for filtering/listing if needed outside the JSON blob
+    data.category?.forEach((cat: string) => submitData.append("category", cat));
 
+    const res = await serverFetch.post("/jobs", { body: submitData });
     const result = await res.json();
 
     if (!result.success) {
-      return {
-        success: false,
-        message: result.message || "Failed to create job",
-      };
+      return { success: false, message: result.message || "Failed to create job" };
     }
 
     revalidatePath("/admin/dashboard");
-
-    return {
-      success: true,
-      message: "Job created successfully",
-      data: result.data,
-    };
+    return { success: true, message: "Job posted successfully", data: result.data };
   } catch (error: any) {
     console.error("Error creating job:", error);
-    return {
-      success: false,
-      message: error.message || "Something went wrong while creating the job",
-    };
+    return { success: false, message: error.message || "Something went wrong" };
   }
 };
 

@@ -22,26 +22,20 @@ export const loginUser = async (_currentState: any, formData: FormData): Promise
 
     const validatedPayload = zodValidator(payload, loginValidationZodSchema);
 
-    if (!validatedPayload.success && validatedPayload.errors) {
+    if (!validatedPayload.success) {
       return {
-        success: validatedPayload.success,
+        success: false,
         message: "Validation failed",
         formData: payload,
         errors: validatedPayload.errors,
       }
     }
 
-    if (!validatedPayload.data) {
-      return {
-        success: false,
-        message: "Validation failed",
-        formData: payload,
-      }
-    }
+    const { data } = validatedPayload;
 
     const backendPayload = {
-      email: validatedPayload.data.email,
-      password: validatedPayload.data.password
+      email: data.email,
+      password: data.password
     }
 
     const res = await serverFetch.post("/auth/login", {
