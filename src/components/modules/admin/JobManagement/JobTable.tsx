@@ -1,5 +1,6 @@
 import { IJob } from "@/types";
-import { Edit, Trash2, MapPin, Briefcase } from "lucide-react";
+import { Edit, MapPin, Briefcase } from "lucide-react";
+import DeleteJobAction from "./DeleteJobAction";
 
 interface JobTableProps {
   jobs: IJob[];
@@ -69,9 +70,7 @@ export default function JobTable({ jobs }: JobTableProps) {
                     <button className="p-2 text-slate-400 hover:text-indigo-600 hover:bg-indigo-50 rounded-lg transition-all" title="Edit">
                       <Edit size={18} />
                     </button>
-                    <button className="p-2 text-slate-400 hover:text-rose-600 hover:bg-rose-50 rounded-lg transition-all" title="Delete">
-                      <Trash2 size={18} />
-                    </button>
+                    {job._id && <DeleteJobAction jobId={job._id} />}
                   </div>
                 </td>
               </tr>

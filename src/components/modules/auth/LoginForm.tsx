@@ -5,32 +5,32 @@ import { loginUser } from "@/services/auth/auth";
 import Link from "next/link";
 import { useActionState, useEffect, useState } from "react";
 import { toast } from "sonner";
+import InputFieldError from "@/components/shared/InputFieldError";
 
 export default function LoginForm({ redirectPath }: { redirectPath?: string }) {
+  const [state, formAction, isPending] = useActionState(loginUser, null);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [state, formAction, isPending] = useActionState(loginUser, null);
 
   useEffect(() => {
     if (state) {
       if (
         !state.success &&
         state.message &&
-        state.message != "Validation failed"
+        state.message !== "Validation failed"
       ) {
         toast.error(state.message);
+      }
+
+      if (state.formData) {
+        setEmail(state.formData.email || "");
+        setPassword(state.formData.password || "");
       }
     }
   }, [state]);
 
-  useEffect(() => {
-    if (state?.formData) {
-      setEmail(state.formData.email || "");
-      setPassword(state.formData.password || "");
-    }
-  }, [state]);
-
-  const fillDemoUser = () => {
+  const fillDemoUser = (e: React.MouseEvent) => {
+    e.preventDefault();
     setEmail("admin@gmail.com");
     setPassword("123456789");
   };
@@ -38,69 +38,73 @@ export default function LoginForm({ redirectPath }: { redirectPath?: string }) {
   return (
     <form
       action={formAction}
-      className="w-full space-y-6 animate-in fade-in slide-in-from-bottom-4 duration-500"
+      className="w-full space-y-2 animate-in fade-in slide-in-from-bottom-4 duration-500"
     >
       <input type="hidden" name="redirectPath" value={redirectPath || ""} />
 
-      <div className="space-y-2">
+      <div className="space-y-1">
         <label
           htmlFor="email"
-          className="text-base font-semibold text-[#515B6F] font-epilogue"
+          className="block text-sm font-semibold text-slate-700"
         >
-          Email Address
+          Email Address <span className="text-red-500">*</span>
         </label>
         <input
           name="email"
           type="email"
-          placeholder="Enter email"
+          placeholder="Enter your email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
           disabled={isPending}
-          className="w-full px-4 py-3 border border-[#D6DDEB] focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE] outline-none transition-all font-epilogue"
+          className="input-field"
         />
+        <InputFieldError state={state} field="email" />
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1">
         <label
           htmlFor="password"
-          className="text-base font-semibold text-[#515B6F] font-epilogue"
+          className="block text-sm font-semibold text-slate-700"
         >
-          Password
+          Password <span className="text-red-500">*</span>
         </label>
         <input
           name="password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder="Enter password"
+          placeholder="Enter your password"
           required
           disabled={isPending}
-          className="w-full px-4 py-3 border border-[#D6DDEB] focus:border-[#4640DE] focus:ring-1 focus:ring-[#4640DE] outline-none transition-all font-epilogue"
+          className="input-field"
         />
+        <InputFieldError state={state} field="password" />
       </div>
 
-      <button
-        type="submit"
-        disabled={isPending}
-        className="w-full bg-[#4640DE] text-white py-4 font-bold hover:bg-[#3b36c4] transition-colors font-epilogue disabled:opacity-60"
-      >
-        {isPending ? "Signing in..." : "Login"}
-      </button>
+      <div className="space-y-2 pt-2">
+        <button
+          type="submit"
+          disabled={isPending}
+          className="w-full py-3 px-4 rounded-lg font-semibold text-white bg-indigo-600 hover:bg-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition"
+        >
+          {isPending ? "Signing in..." : "Login"}
+        </button>
 
-      <button
-        type="button"
-        onClick={fillDemoUser}
-        className="w-full border border-[#4640DE] text-[#4640DE] py-3 font-bold hover:bg-[#4640DE]/5 transition-colors font-epilogue"
-      >
-        Admin Demo
-      </button>
+        <button
+          type="button"
+          onClick={fillDemoUser}
+          className="w-full border-2 border-indigo-600 text-indigo-600 py-2.5 font-semibold rounded-lg"
+        >
+          Admin Demo
+        </button>
+      </div>
 
-      <p className="text-center text-[#515B6F] font-epilogue">
+      <p className="text-center text-slate-600 text-sm">
         Don&lsquo;t have an account?{" "}
         <Link
           href="/signup"
-          className="text-[#4640DE] font-bold hover:underline"
+          className="text-indigo-600 font-bold hover:underline"
         >
           Sign Up
         </Link>

@@ -4,7 +4,7 @@
 import { serverFetch } from "@/lib/server-fetch";
 import { zodValidator } from "@/lib/zodValidator";
 import { createJobValidationZodSchema } from "@/zod";
-import { revalidatePath } from "next/cache";
+import { revalidatePath, revalidateTag } from "next/cache";
 
 export const createJob = async (_currentState: any, formData: FormData): Promise<any> => {
   try {
@@ -58,7 +58,9 @@ export const createJob = async (_currentState: any, formData: FormData): Promise
 
 export const getAllJobs = async () => {
   try {
-    const response = await serverFetch.get("/jobs");
+    const response = await serverFetch.get("/jobs", {
+      next: { tags: ["jobs"] },
+    });
     return { success: true, data: await response.json() };
   } catch (error) {
     console.error("Error fetching jobs:", error);
@@ -83,6 +85,7 @@ export const deleteJob = async (
 ) => {
   try {
     await serverFetch.delete(`/jobs/${jobId}`);
+    revalidateTag("jobs", "max");
     return { success: true };
   } catch (error) {
     console.error("Error deleting job:", error);
