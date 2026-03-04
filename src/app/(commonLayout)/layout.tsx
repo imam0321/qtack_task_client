@@ -21,11 +21,8 @@ export default function CommonLayout({
         />
       </div>
 
-      {/* Content */}
-      <div className="relative z-10">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-      </div>
+      <Navbar />
+      <main className="flex-1 relative z-10">{children}</main>
       <Footer />
     </div>
   );

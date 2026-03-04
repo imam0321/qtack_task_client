@@ -61,7 +61,7 @@ export const getAllJobs = async (queryString?: string) => {
     const response = await serverFetch.get(`/jobs${queryString ? `?${queryString}` : ""}`, {
       next: { tags: ["jobs"] },
     });
-    return { success: true, data: await response.json() };
+    return await response.json() ;
   } catch (error) {
     console.error("Error fetching jobs:", error);
     return { success: false };

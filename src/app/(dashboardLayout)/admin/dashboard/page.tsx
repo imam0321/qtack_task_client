@@ -12,7 +12,8 @@ export default async function AdminDashboardPage({
 }) {
   const searchParamsObj = await searchParams;
   const queryString = queryStringFormatter(searchParamsObj);
-  const { data: jobs } = await getAllJobs(queryString);
+  const res = await getAllJobs(queryString);
+  const jobs = res?.data?.data || [];
 
   return (
     <div className="space-y-4 animate-in fade-in duration-500">

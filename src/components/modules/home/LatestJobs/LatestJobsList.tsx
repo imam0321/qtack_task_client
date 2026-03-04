@@ -1,13 +1,13 @@
 import Link from "next/link";
 import Image from "next/image";
-import LatestJobCard from "./LatestJobCard";
-import { featuredJobs } from "./FeaturedJobs";
+import { Suspense } from "react";
+import { LatestJobsContent } from "./LatestJobsContent";
+import { LatestJobsGridSkeleton } from "./LatestJobsGridSkeleton";
 
-
-
-export default function LatestJobs() {
+export default function LatestJobsList() {
   return (
-    <section className="relative overflow-hidden bg-[#F8F8FD]"
+    <section
+      className="relative overflow-hidden bg-[#F8F8FD]"
       style={{
         clipPath:
           "polygon(8% 0, 100% 0, 100% 100%, 100% 100%, 0 100%, 0 100%, 0 6%)",
@@ -34,22 +34,31 @@ export default function LatestJobs() {
             Latest <span className="text-[#26A4FF]">jobs open</span>
           </h2>
 
-          <Link href="#" className="hidden items-center font-semibold text-[#4640DE] md:flex">
+          <Link
+            href="#"
+            className="hidden items-center font-semibold text-[#4640DE] md:flex"
+          >
             Show all jobs
-            <svg className="ml-2 h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path d="M14 5l7 7m0 0l-7 7m7-7H3" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" />
+            <svg
+              className="ml-2 h-4 w-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                d="M14 5l7 7m0 0l-7 7m7-7H3"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth="2"
+              />
             </svg>
           </Link>
         </div>
 
-        {/* Grid */}
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-          {featuredJobs.map((job, i) => (
-            <LatestJobCard key={i} job={job} />
-          ))}
-        </div>
+        <Suspense fallback={<LatestJobsGridSkeleton />}>
+          <LatestJobsContent />
+        </Suspense>
       </div>
     </section>
-
   );
 }

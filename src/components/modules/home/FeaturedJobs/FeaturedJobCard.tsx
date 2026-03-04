@@ -1,14 +1,14 @@
+import { IJob } from "@/types";
 import Image from "next/image";
-import { IJob } from "./FeaturedJobs";
 import Link from "next/link";
 
 const CATEGORY_COLOR: Record<string, string> = {
   Design: "bg-[#56CDAD1A] text-[#56CDAD]",
-  Sales: "bg-[#56CDAD1A] text-[#56CDAD]",
+  Sales: "bg-[#E8F5E9] text-[#4CAF50]",
   Marketing: "bg-[#EB85331A] text-[#FFB836]",
-  Finance: "bg-[#FF65501A] text-[#FF6550]",
+  Finance: "bg-[#F3E5F5] text-[#9C27B0]",
   Technology: "bg-[#FF65501A] text-[#FF6550]",
-  Engineering: "bg-[#56CDAD1A] text-[#56CDAD]",
+  Engineering: "bg-[#E3F2FD] text-[#2196F3]",
   Business: "bg-[#4640DE1A] text-[#4640DE]",
   "Human Resources": "bg-[#FFB8361A] text-[#FFB836]",
 };
@@ -20,7 +20,7 @@ interface Props {
 
 export default function FeaturedJobCard({ job, className }: Props) {
   return (
-    <Link href="#" className={`border border-[#D6DDEB] bg-white p-6 ${className}`}>
+    <Link href={`/jobs/${job._id}`} className={`border border-[#D6DDEB] bg-white p-6 ${className}`}>
       <div className="mb-4 flex items-center justify-between">
         <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#4640DE]/10">
           {job.icon ? (
@@ -33,7 +33,7 @@ export default function FeaturedJobCard({ job, className }: Props) {
         </div>
 
         <p className="border border-[#4640DE] px-3 py-1 text-[#4640DE]">
-          {job.type}
+          {job.jobType}
         </p>
       </div>
 
@@ -50,12 +50,12 @@ export default function FeaturedJobCard({ job, className }: Props) {
       </p>
 
       <div className="flex flex-wrap gap-2">
-        {job.tags.map((tag, i) => (
+        {job?.category?.map((cat, i) => (
           <span
             key={i}
-            className={`rounded-full px-4 py-1 text-[10px] font-bold ${CATEGORY_COLOR[tag] || "bg-gray-100 text-gray-600"}`}
+            className={`rounded-full px-4 py-1 text-[10px] font-bold ${CATEGORY_COLOR[cat] || "bg-gray-100 text-gray-600"}`}
           >
-            {tag}
+            {cat}
           </span>
         ))}
       </div>
