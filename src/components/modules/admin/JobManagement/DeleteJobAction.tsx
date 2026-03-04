@@ -52,7 +52,7 @@ export default function DeleteJobAction({ jobId }: { jobId: string }) {
 						type="button"
 						onClick={handleDelete}
 						disabled={isDeleting}
-						className="px-4 py-2 rounded-lg font-medium text-white bg-rose-600 hover:bg-rose-700 min-w-[110px]"
+						className="px-4 py-2 rounded-lg font-medium text-white bg-rose-600 hover:bg-rose-700 min-w-27.5"
 					>
 						{isDeleting ? "Deleting..." : "Delete"}
 					</button>

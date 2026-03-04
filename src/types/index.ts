@@ -6,7 +6,12 @@ export interface IUser {
   exp?: number;
 }
 
-export type TJobType = "Full Time" | "Part Time" | "Remote" | "Contract" | "Internship";
+export type TJobType =
+  | "Full Time"
+  | "Part Time"
+  | "Remote"
+  | "Contract"
+  | "Internship";
 
 export type TJobCategory =
   | "Design"
@@ -34,11 +39,11 @@ export interface IJob {
 export interface TPaginationMeta {
   page: number;
   limit: number;
-  totalPage: number;
-  totalDocument: number;
+  total: number;
+  totalPages: number;
 }
 
-export interface TActionResponse<T = unknown, F = any> {
+export interface TActionResponse<T = unknown, F = unknown> {
   success: boolean;
   message: string;
   data?: T;
@@ -46,6 +51,3 @@ export interface TActionResponse<T = unknown, F = any> {
   errors?: { field: string; message: string }[];
   formData?: F;
 }
-
-
-

@@ -56,9 +56,9 @@ export const createJob = async (_currentState: any, formData: FormData): Promise
   }
 };
 
-export const getAllJobs = async (page = 1, limit = 10) => {
+export const getAllJobs = async (queryString?: string) => {
   try {
-    const response = await serverFetch.get(`/jobs?page=${page}&limit=${limit}`, {
+    const response = await serverFetch.get(`/jobs${queryString ? `?${queryString}` : ""}`, {
       next: { tags: ["jobs"] },
     });
     return { success: true, data: await response.json() };
