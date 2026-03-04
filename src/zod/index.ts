@@ -30,3 +30,11 @@ export const createJobValidationZodSchema = z.object({
     )
     .min(1, { message: "At least one category is required" }),
 });
+
+export const createJobApplicationValidationZodSchema = z.object({
+  jobId: z.string().min(1, { message: "Job ID is required" }),
+  name: z.string().min(2, { message: "Name must be at least 2 characters" }),
+  email: z.email({ message: "Please enter a valid email address" }),
+  resumeLink: z.string().url({ message: "Please enter a valid URL for your resume" }),
+  coverNote: z.string().optional(),
+});

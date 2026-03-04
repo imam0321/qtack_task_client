@@ -49,7 +49,7 @@ export default function MobileNav({ navLinks, user }: MobileNavProps) {
 
       {/* Mobile Menu Panel - Fixed Position */}
       {open && (
-        <div className="fixed left-0 right-0 top-20 z-40 w-full bg-white border-b border-slate-200 px-4 py-2 space-y-2 animate-fade-in-down md:hidden">
+        <div className="fixed left-0 right-0 top-14.5 z-40 w-full bg-white border-b border-slate-200 px-4 py-2 space-y-2 animate-fade-in-down md:hidden">
           <nav className="flex flex-col space-y-4">
             {navLinks.map((link) => (
               <Link
@@ -89,4 +89,3 @@ export default function MobileNav({ navLinks, user }: MobileNavProps) {
     </>
   );
 }
-

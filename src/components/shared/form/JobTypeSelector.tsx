@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { TJobType } from "@/types";
 import { ChevronDown } from "lucide-react";
 import InputFieldError from "@/components/shared/InputFieldError";

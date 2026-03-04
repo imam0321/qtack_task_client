@@ -13,7 +13,11 @@ export async function FeaturedJobsContent() {
         <div className="flex w-max gap-2 snap-x snap-mandatory">
           {jobs && jobs.length > 0 ? (
             jobs.map((job: IJob) => (
-              <FeaturedJobCard key={job._id} job={job} className="w-[75vw] snap-start" />
+              <FeaturedJobCard
+                key={job._id}
+                job={job}
+                className="w-[75vw] snap-start"
+              />
             ))
           ) : (
             <p>No featured jobs available.</p>
@@ -24,9 +28,7 @@ export async function FeaturedJobsContent() {
       {/* Desktop Grid */}
       <div className="hidden grid-cols-2 gap-4 sm:grid lg:grid-cols-4">
         {jobs && jobs.length > 0 ? (
-          jobs.map((job: IJob) => (
-            <FeaturedJobCard key={job._id} job={job} />
-          ))
+          jobs.map((job: IJob) => <FeaturedJobCard key={job._id} job={job} />)
         ) : (
           <p>No featured jobs available.</p>
         )}

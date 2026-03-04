@@ -3,6 +3,7 @@ import Image from "next/image";
 import MobileNav from "./MobileNav";
 import { getCurrentUser } from "@/services/auth/auth";
 import LogoutButton from "./LogoutButton";
+export const dynamic = "force-dynamic";
 
 export default async function Navbar() {
   const user = await getCurrentUser();
@@ -13,7 +14,7 @@ export default async function Navbar() {
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full lg:px-31 px-4 relative z-10">
+    <header className="sticky top-0 w-full lg:px-31 px-4 z-40 bg-white/70 backdrop-blur-md border-b border-[#D6DDEB]/30 md:bg-transparent md:backdrop-blur-none md:border-none">
       {/* Main Navbar Container */}
       <div className="flex items-center justify-between py-2">
         <div className="flex items-center space-x-8">
