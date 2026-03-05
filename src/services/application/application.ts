@@ -61,3 +61,19 @@ export const createJobApplication = async (
     return { success: false, message: error.message || "Something went wrong" };
   }
 };
+
+export const getAllApplications = async (queryString?: string) => {
+  try {
+    const response = await serverFetch.get(
+      `/applications${queryString ? `?${queryString}` : ""}`,
+      {
+        next: { tags: ["applications"] },
+        requiresAuth: true,
+      },
+    );
+    return await response.json();
+  } catch (error) {
+    console.error("Error fetching applications:", error);
+    return { success: false };
+  }
+};
