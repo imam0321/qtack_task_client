@@ -47,7 +47,7 @@ export default function JobFilterSidebar() {
   };
 
   return (
-    <aside className="lg:w-1/4 space-y-8 animate-in fade-in slide-in-from-left-4 duration-500">
+    <aside className="w-full space-y-8 animate-in fade-in slide-in-from-left-4 duration-500">
       <div>
         <h3 className="font-clash-display text-xl font-semibold text-[#25324B] mb-4">
           Type of Employment

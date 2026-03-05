@@ -20,9 +20,9 @@ export default function FeaturedJobCard({ job, className }: Props) {
             <Image
               src={job.icon}
               alt={job.company}
-              width={32}
-              height={32}
-              className="h-auto w-auto object-contain"
+              width={48}
+              height={48}
+              className="h-auto w-auto object-cover rounded-full"
             />
           ) : (
             <span className="rounded-full px-3 py-1 text-lg font-bold text-black">

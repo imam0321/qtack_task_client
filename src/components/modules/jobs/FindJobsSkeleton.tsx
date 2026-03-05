@@ -47,14 +47,14 @@ export default function FindJobsSkeleton() {
             </div>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
-                className="h-64 rounded-2xl border border-[#D6DDEB] bg-white p-6 shadow-sm animate-pulse"
+                className="h-64 border border-[#D6DDEB] bg-white p-6 shadow-sm animate-pulse"
               >
                 <div className="flex items-start justify-between">
-                  <div className="h-12 w-12 rounded bg-slate-200" />
+                  <div className="h-12 w-12 rounded-full bg-slate-200" />
                   <div className="h-6 w-20 rounded-full bg-slate-100" />
                 </div>
                 <div className="mt-4 space-y-3">

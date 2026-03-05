@@ -11,8 +11,8 @@ export async function FeaturedJobsContent() {
       {/* Mobile: Swipe */}
       <div className="sm:hidden -mx-4 overflow-x-auto px-4 pb-4">
         <div className="flex w-max gap-2 snap-x snap-mandatory">
-          {jobs && jobs.length > 0 ? (
-            jobs.map((job: IJob) => (
+          {jobs && jobs.length > 4 ? (
+            jobs.slice(4).map((job: IJob) => (
               <FeaturedJobCard
                 key={job._id}
                 job={job}
