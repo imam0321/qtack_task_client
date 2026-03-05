@@ -4,7 +4,6 @@ import { IJob } from "@/types";
 import { JobsColumns } from "./JobsColumns";
 
 export default function JobTable({ jobs }: { jobs: IJob[] }) {
-  
   return (
     <>
       <ManagementTable

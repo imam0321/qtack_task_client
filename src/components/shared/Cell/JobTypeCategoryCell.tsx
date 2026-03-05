@@ -13,19 +13,24 @@ const CATEGORY_COLOR: Record<string, string> = {
   "Human Resources": "bg-[#FFB8361A] text-[#FFB836]",
 };
 
-export default function JobTypeCategoryCell({ jobType, category = [] }: JobTypeCategoryCellProps) {
+export default function JobTypeCategoryCell({
+  jobType,
+  category = [],
+}: JobTypeCategoryCellProps) {
   // Badge color mapping
-  const badgeColor = 
+  const badgeColor =
     jobType === "Full Time"
       ? "bg-indigo-50 text-indigo-600"
       : jobType === "Remote"
-      ? "bg-emerald-50 text-emerald-600"
-      : "bg-amber-50 text-amber-600";
+        ? "bg-emerald-50 text-emerald-600"
+        : "bg-amber-50 text-amber-600";
 
   return (
     <div className="flex flex-col gap-1.5">
       {/* Job Type Badge */}
-      <span className={`inline-flex items-center w-fit px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${badgeColor}`}>
+      <span
+        className={`inline-flex items-center w-fit px-2.5 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider ${badgeColor}`}
+      >
         {jobType}
       </span>
 

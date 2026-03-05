@@ -4,21 +4,28 @@
 import { serverFetch } from "@/lib/server-fetch";
 import { zodValidator } from "@/lib/zodValidator";
 import { loginValidationZodSchema } from "@/zod";
-import { parse } from "cookie"
+import { parse } from "cookie";
 import jwt, { JwtPayload } from "jsonwebtoken";
 import { setCookie, deleteCookie, getCookie } from "./tokenHandlers";
-import { getDefaultDashboardRoute, isValidRedirectForRole, UserRole } from "@/lib/auth.utils";
+import {
+  getDefaultDashboardRoute,
+  isValidRedirectForRole,
+  UserRole,
+} from "@/lib/auth.utils";
 import { redirect } from "next/navigation";
 
-export const loginUser = async (_currentState: any, formData: FormData): Promise<any> => {
+export const loginUser = async (
+  _currentState: any,
+  formData: FormData,
+): Promise<any> => {
   try {
     let accessTokenObject: null | any = null;
     const redirectPath = formData.get("redirectPath") || null;
 
     const payload = {
       email: formData.get("email"),
-      password: formData.get("password")
-    }
+      password: formData.get("password"),
+    };
 
     const validatedPayload = zodValidator(payload, loginValidationZodSchema);
 
@@ -28,19 +35,19 @@ export const loginUser = async (_currentState: any, formData: FormData): Promise
         message: "Validation failed",
         formData: payload,
         errors: validatedPayload.errors,
-      }
+      };
     }
 
     const { data } = validatedPayload;
 
     const backendPayload = {
       email: data.email,
-      password: data.password
-    }
+      password: data.password,
+    };
 
     const res = await serverFetch.post("/auth/login", {
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(backendPayload)
+      body: JSON.stringify(backendPayload),
     });
 
     const result = await res.json();
@@ -61,7 +68,7 @@ export const loginUser = async (_currentState: any, formData: FormData): Promise
         if (parseCookie["accessToken"]) {
           accessTokenObject = parseCookie;
         }
-      })
+      });
     } else {
       return {
         success: false,
@@ -81,11 +88,13 @@ export const loginUser = async (_currentState: any, formData: FormData): Promise
       secure: true,
       sameSite: "none",
       maxAge: parseInt(accessTokenObject["Max-Age"]) || 60 * 60 * 24,
-      path: accessTokenObject.Path || "/"
-    })
+      path: accessTokenObject.Path || "/",
+    });
 
-
-    const verifyToken: JwtPayload | string = jwt.verify(accessTokenObject.accessToken, process.env.JWT_ACCESS_SECRET as string)
+    const verifyToken: JwtPayload | string = jwt.verify(
+      accessTokenObject.accessToken,
+      process.env.JWT_ACCESS_SECRET as string,
+    );
 
     if (typeof verifyToken === "string") {
       return {
@@ -99,24 +108,29 @@ export const loginUser = async (_currentState: any, formData: FormData): Promise
     if (redirectPath) {
       const requestedPath = redirectPath.toString();
       if (isValidRedirectForRole(requestedPath, userRole)) {
-        redirect(`${requestedPath}${requestedPath.includes("?") ? "&" : "?"}loggedIn=true`);
+        redirect(
+          `${requestedPath}${requestedPath.includes("?") ? "&" : "?"}loggedIn=true`,
+        );
       } else {
         redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
       }
     } else {
       redirect(`${getDefaultDashboardRoute(userRole)}?loggedIn=true`);
     }
-
   } catch (error: any) {
-    if (error?.digest?.startsWith && typeof error.digest === "string" && error.digest.startsWith("NEXT_REDIRECT")) {
+    if (
+      error?.digest?.startsWith &&
+      typeof error.digest === "string" &&
+      error.digest.startsWith("NEXT_REDIRECT")
+    ) {
       throw error;
     }
     return {
       success: false,
-      message: error.message || "Login failed. Please try again."
-    }
+      message: error.message || "Login failed. Please try again.",
+    };
   }
-}
+};
 
 export const logoutUser = async () => {
   await deleteCookie("accessToken");
@@ -134,4 +148,3 @@ export const getCurrentUser = async () => {
     return null;
   }
 };
-

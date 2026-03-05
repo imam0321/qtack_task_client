@@ -9,8 +9,11 @@ import ImageUploadInput from "@/components/shared/form/ImageUploadInput";
 import JobTypeSelector from "@/components/shared/form/JobTypeSelector";
 import { fields, jobTypes, categories } from "./constants";
 
-
-export default function CreateJobForm({ handleClose }: { handleClose: () => void }) {
+export default function CreateJobForm({
+  handleClose,
+}: {
+  handleClose: () => void;
+}) {
   const formRef = useRef<HTMLFormElement | null>(null);
   const [state, formAction, isPending] = useActionState(createJob, null);
 
@@ -19,11 +22,15 @@ export default function CreateJobForm({ handleClose }: { handleClose: () => void
   );
   const [showCategoryError, setShowCategoryError] = useState(false);
   const [previewSrc, setPreviewSrc] = useState<string | null>(null);
-  const [selectedJobType, setSelectedJobType] = useState(state?.formData?.jobType || "");
+  const [selectedJobType, setSelectedJobType] = useState(
+    state?.formData?.jobType || "",
+  );
 
   const toggleCategory = (cat: TJobCategory) => {
     setSelectedCategories((prev) => {
-      const newCats = prev.includes(cat) ? prev.filter((c) => c !== cat) : [...prev, cat];
+      const newCats = prev.includes(cat)
+        ? prev.filter((c) => c !== cat)
+        : [...prev, cat];
       if (newCats.length > 0) setShowCategoryError(false);
       return newCats;
     });
@@ -51,7 +58,12 @@ export default function CreateJobForm({ handleClose }: { handleClose: () => void
   };
 
   return (
-    <form ref={formRef} action={formAction} onSubmit={handleSubmit} className="space-y-4">
+    <form
+      ref={formRef}
+      action={formAction}
+      onSubmit={handleSubmit}
+      className="space-y-4"
+    >
       {selectedCategories.map((cat) => (
         <input key={cat} type="hidden" name="category" value={cat} />
       ))}
@@ -59,7 +71,10 @@ export default function CreateJobForm({ handleClose }: { handleClose: () => void
       <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
         {/* Modernized Input Mapping */}
         {fields.map((field, idx) => (
-          <div key={field.name} className={`space-y-1 ${idx === 0 ? "md:col-span-1" : ""}`}>
+          <div
+            key={field.name}
+            className={`space-y-1 ${idx === 0 ? "md:col-span-1" : ""}`}
+          >
             <label className="block text-sm font-semibold text-slate-700">
               {field.label} <span className="text-red-500">*</span>
             </label>

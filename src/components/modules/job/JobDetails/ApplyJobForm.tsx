@@ -5,11 +5,8 @@ import { useRouter } from "next/navigation";
 import InputFieldError from "@/components/shared/InputFieldError";
 import { createJobApplication } from "@/services/application/application";
 
-interface Props {
-  jobId: string;
-}
 
-export default function ApplyJobForm({ jobId }: Props) {
+export default function ApplyJobForm({ jobId }: { jobId: string }) {
   const router = useRouter();
   const [state, formAction, isPending] = useActionState(
     createJobApplication,

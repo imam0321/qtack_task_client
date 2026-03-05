@@ -12,7 +12,7 @@ export default function FeaturedJobsList() {
         </h2>
 
         <Link
-          href="#"
+          href="/find-jobs"
           className="hidden items-center font-semibold text-[#4640DE] md:flex"
         >
           Show all jobs
@@ -39,7 +39,7 @@ export default function FeaturedJobsList() {
       {/* Mobile Link */}
       <div className="mt-1 sm:hidden">
         <Link
-          href="#"
+          href="/find-jobs"
           className="flex items-center font-semibold text-[#4640DE]"
         >
           Show all jobs

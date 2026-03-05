@@ -4,7 +4,6 @@ import { Suspense } from "react";
 import TableSkeleton from "@/components/shared/TableSkeleton";
 import JobTableContent from "@/components/modules/admin/JobManagement/JobTableContent";
 
-
 export default async function AdminDashboardPage({
   searchParams,
 }: {

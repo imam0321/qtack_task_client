@@ -6,7 +6,10 @@ import { zodValidator } from "@/lib/zodValidator";
 import { createJobValidationZodSchema } from "@/zod";
 import { revalidatePath, revalidateTag } from "next/cache";
 
-export const createJob = async (_currentState: any, formData: FormData): Promise<any> => {
+export const createJob = async (
+  _currentState: any,
+  formData: FormData,
+): Promise<any> => {
   try {
     const payload = {
       title: formData.get("title"),
@@ -17,12 +20,17 @@ export const createJob = async (_currentState: any, formData: FormData): Promise
       category: formData.getAll("category"),
     };
 
-    const validatedPayload = zodValidator(payload, createJobValidationZodSchema);
+    const validatedPayload = zodValidator(
+      payload,
+      createJobValidationZodSchema,
+    );
 
     if (!validatedPayload.success) {
       return {
         success: false,
-        message: validatedPayload.errors ? "Validation failed" : "Internal validation error",
+        message: validatedPayload.errors
+          ? "Validation failed"
+          : "Internal validation error",
         formData: payload,
         errors: validatedPayload.errors,
       };
@@ -45,11 +53,18 @@ export const createJob = async (_currentState: any, formData: FormData): Promise
     const result = await res.json();
 
     if (!result.success) {
-      return { success: false, message: result.message || "Failed to create job" };
+      return {
+        success: false,
+        message: result.message || "Failed to create job",
+      };
     }
 
     revalidatePath("/admin/dashboard");
-    return { success: true, message: "Job posted successfully", data: result.data };
+    return {
+      success: true,
+      message: "Job posted successfully",
+      data: result.data,
+    };
   } catch (error: any) {
     console.error("Error creating job:", error);
     return { success: false, message: error.message || "Something went wrong" };
@@ -58,19 +73,20 @@ export const createJob = async (_currentState: any, formData: FormData): Promise
 
 export const getAllJobs = async (queryString?: string) => {
   try {
-    const response = await serverFetch.get(`/jobs${queryString ? `?${queryString}` : ""}`, {
-      next: { tags: ["jobs"] },
-    });
-    return await response.json() ;
+    const response = await serverFetch.get(
+      `/jobs${queryString ? `?${queryString}` : ""}`,
+      {
+        next: { tags: ["jobs"] },
+      },
+    );
+    return await response.json();
   } catch (error) {
     console.error("Error fetching jobs:", error);
     return { success: false };
   }
 };
 
-export const getJobById = async (
-  jobId: string
-) => {
+export const getJobById = async (jobId: string) => {
   try {
     const response = await serverFetch.get(`/jobs/${jobId}`);
     return { success: true, data: await response.json() };
@@ -80,9 +96,7 @@ export const getJobById = async (
   }
 };
 
-export const deleteJob = async (
-  jobId: string
-) => {
+export const deleteJob = async (jobId: string) => {
   try {
     await serverFetch.delete(`/jobs/${jobId}`);
     revalidateTag("jobs", "max");

@@ -13,14 +13,10 @@ export const JobsColumns: Column<IJob>[] = [
   {
     header: "Role",
     accessor: (job) => (
-      <JobInfoCell
-        icon={job?.icon}
-        company={job?.company}
-        title={job?.title}
-      />
+      <JobInfoCell icon={job?.icon} company={job?.company} title={job?.title} />
     ),
   },
-	{
+  {
     header: "Date Posted & Location",
     accessor: (job) => (
       <div className="">
@@ -40,7 +36,7 @@ export const JobsColumns: Column<IJob>[] = [
       <JobTypeCategoryCell jobType={job?.jobType} category={job?.category} />
     ),
   },
-  
+
   {
     header: "Actions",
     accessor: (job) => (

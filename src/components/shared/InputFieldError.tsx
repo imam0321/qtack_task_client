@@ -15,7 +15,7 @@ export default function InputFieldError({ state, field }: InputFieldErrorProps) 
   if (!error) return null;
 
   return (
-    <p className="text-xs text-rose-500 font-bold mt-1.5 pl-1 animate-in fade-in slide-in-from-top-1 duration-200">
+    <p className="text-xs text-rose-500 font-semibold mt-1.5 pl-1 animate-in fade-in slide-in-from-top-1 duration-200">
       {error.message}
     </p>
   );

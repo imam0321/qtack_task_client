@@ -35,7 +35,7 @@ export default function LatestJobsList() {
           </h2>
 
           <Link
-            href="#"
+            href="/find-jobs"
             className="hidden items-center font-semibold text-[#4640DE] md:flex"
           >
             Show all jobs

@@ -7,7 +7,10 @@ import { revalidatePath } from "next/cache";
 
 import { createJobApplicationValidationZodSchema } from "@/zod";
 
-export const createJobApplication = async (_currentState: any, formData: FormData): Promise<any> => {
+export const createJobApplication = async (
+  _currentState: any,
+  formData: FormData,
+): Promise<any> => {
   try {
     const payload = {
       jobId: formData.get("jobId"),
@@ -17,7 +20,10 @@ export const createJobApplication = async (_currentState: any, formData: FormDat
       coverNote: formData.get("coverNote"),
     };
 
-    const validatedPayload = zodValidator(payload, createJobApplicationValidationZodSchema);
+    const validatedPayload = zodValidator(
+      payload,
+      createJobApplicationValidationZodSchema,
+    );
 
     if (!validatedPayload.success) {
       return {
@@ -38,11 +44,18 @@ export const createJobApplication = async (_currentState: any, formData: FormDat
     const result = await res.json();
 
     if (!result.success) {
-      return { success: false, message: result.message || "Failed to submit application" };
+      return {
+        success: false,
+        message: result.message || "Failed to submit application",
+      };
     }
 
     revalidatePath("/admin/dashboard");
-    return { success: true, message: "Application submitted successfully", data: result.data };
+    return {
+      success: true,
+      message: "Application submitted successfully",
+      data: result.data,
+    };
   } catch (error: any) {
     console.error("Error submitting application:", error);
     return { success: false, message: error.message || "Something went wrong" };
