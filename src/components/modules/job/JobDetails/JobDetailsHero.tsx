@@ -12,7 +12,7 @@ export default function JobDetailsHero({ job }: Props) {
     <div className="bg-[#F8F8FD]">
       <div className="py-6 ">
         <div className="flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
-          <div className="flex items-start gap-6">
+          <div className="flex flex-col md:flex-row md:items-start gap-6">
             {/* Company Logo */}
             <div className="flex h-20 w-20 shrink-0 items-center justify-center overflow-hidden rounded-2xl border border-[#D6DDEB] bg-white shadow-sm md:h-24 md:w-24">
               {job.icon ? (

@@ -3,7 +3,6 @@ import Image from "next/image";
 import MobileNav from "./MobileNav";
 import { getCurrentUser } from "@/services/auth/auth";
 import LogoutButton from "./LogoutButton";
-export const dynamic = "force-dynamic";
 
 export default async function Navbar() {
   const user = await getCurrentUser();

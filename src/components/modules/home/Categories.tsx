@@ -47,11 +47,10 @@ export default function Categories() {
         {categories.map((cat, index) => (
           <div
             key={index}
-            className={`md:p-8 p-4 border ${
-              cat.active
+            className={`md:p-8 p-4 border ${cat.active
                 ? "bg-[#4640DE] text-white border-[#4640DE]"
                 : "bg-white text-[#25324B] border-[#D6DDEB]"
-            }`}
+              }`}
           >
             {/* Mobile: flex row (icon + text + arrow), Desktop: flex-col */}
             <div className="flex justify-between items-center sm:flex-col sm:items-start gap-4">

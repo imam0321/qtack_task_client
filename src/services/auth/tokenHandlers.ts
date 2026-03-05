@@ -13,8 +13,14 @@ export const setCookie = async (
 };
 
 export const getCookie = async (key: string) => {
-  const cookieStore = await cookies();
-  return cookieStore.get(key)?.value || null;
+  try {
+    const cookieStore = await cookies();
+    return cookieStore.get(key)?.value || null;
+  } catch (error) {
+    // In static generation, cookies() will throw an error. 
+    // We catch it to allow the page to be rendered statically (as a guest).
+    return null;
+  }
 };
 
 export const deleteCookie = async (key: string) => {

@@ -77,6 +77,7 @@ export const getAllJobs = async (queryString?: string) => {
       `/jobs${queryString ? `?${queryString}` : ""}`,
       {
         next: { tags: ["jobs"] },
+        requiresAuth: false,
       },
     );
     return await response.json();
@@ -88,7 +89,9 @@ export const getAllJobs = async (queryString?: string) => {
 
 export const getJobById = async (jobId: string) => {
   try {
-    const response = await serverFetch.get(`/jobs/${jobId}`);
+    const response = await serverFetch.get(`/jobs/${jobId}`, {
+      requiresAuth: false,
+    });
     return { success: true, data: await response.json() };
   } catch (error) {
     console.error("Error fetching job:", error);
