@@ -55,13 +55,19 @@ Ensure you have **npm**, **yarn**, **pnpm**, or **bun** installed on your system
    Create a `.env.local` file in the root directory and add the necessary environment configurations (such as your backend API URL).
 
    ```env
-   NEXT_PUBLIC_BASE_API=http://localhost:5000/api/v1
+   NEXT_PUBLIC_BASE_API=http://localhost:5000/api
    ```
 
 4. **Run the Development Server**:
 
+    ```bash
+   npm install
+   ```
+
+   _OR_ using **Bun**:
+
    ```bash
-   npm run dev
+   bun install
    ```
 
    Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

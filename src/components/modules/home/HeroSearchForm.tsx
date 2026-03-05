@@ -3,6 +3,7 @@
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import Image from "next/image";
+import { MapPin } from "lucide-react";
 
 interface HeroSearchFormProps {
 	className?: string;
@@ -63,13 +64,7 @@ export default function HeroSearchForm({
 
 					{/* Location Input */}
 					<div className="group flex w-full items-center px-6.5 py-3.5 md:flex-1 md:py-1 relative">
-						<Image
-							src="/icons/location.svg"
-							alt="Location"
-							width={20}
-							height={20}
-							className="mr-3 opacity-60"
-						/>
+						<MapPin className="mr-3 opacity-60" size={20}/>
 						<input
 							type="text"
 							value={location}
