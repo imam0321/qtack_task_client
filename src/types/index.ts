@@ -23,6 +23,17 @@ export type TJobCategory =
   | "Business"
   | "Human Resources";
 
+export interface IApplication {
+  _id?: string;
+  jobId?: string | IJob; // populated from backend
+  name: string;
+  email: string;
+  resumeLink: string;
+  coverNote?: string;
+  createdAt?: string;
+  updatedAt?: string;
+}
+
 export interface IJob {
   _id?: string;
   title?: string;

@@ -2,12 +2,13 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { LayoutDashboard, ChevronLeft, ChevronRight } from "lucide-react";
+import { LayoutDashboard, Users, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
 const mainItems = [
   { name: "Dashboard", href: "/admin/dashboard", icon: LayoutDashboard },
+  { name: "Applications", href: "/admin/applications", icon: Users },
 ];
 
 export default function Sidebar() {
@@ -30,9 +31,8 @@ export default function Sidebar() {
 
   return (
     <aside
-      className={`bg-white border-r border-slate-200/80 transition-all duration-300 ease-in-out flex flex-col h-screen sticky top-0 z-40 ${
-        isCollapsed ? "w-16" : "w-60"
-      }`}
+      className={`bg-white border-r border-slate-200/80 transition-all duration-300 ease-in-out flex flex-col h-screen sticky top-0 z-40 ${isCollapsed ? "w-16" : "w-60"
+        }`}
     >
       {/* Header */}
       <div className="h-16 flex items-center justify-between px-4 border-b border-slate-100/80">
@@ -51,9 +51,8 @@ export default function Sidebar() {
 
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className={`p-1.5 text-slate-500 hover:bg-slate-100 transition ${
-            isCollapsed ? "mx-auto" : ""
-          }`}
+          className={`p-1.5 text-slate-500 hover:bg-slate-100 transition ${isCollapsed ? "mx-auto" : ""
+            }`}
         >
           {isCollapsed ? <ChevronRight size={18} /> : <ChevronLeft size={18} />}
         </button>
@@ -70,19 +69,17 @@ export default function Sidebar() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`group relative flex items-center gap-3 px-3 py-2.5 rounded-lg ${
-                  isActive
+                className={`group relative flex items-center gap-3 px-3 py-2.5 rounded-lg ${isActive
                     ? "bg-indigo-100 text-indigo-600"
                     : "text-slate-600 hover:bg-slate-50 hover:text-slate-900"
-                }`}
+                  }`}
               >
                 <item.icon
                   size={20}
-                  className={`${
-                    isActive
+                  className={`${isActive
                       ? "text-indigo-600"
                       : "text-slate-400 group-hover:text-slate-700"
-                  }`}
+                    }`}
                 />
 
                 {!isCollapsed && (

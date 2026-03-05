@@ -1,8 +1,8 @@
 import Categories from "@/components/modules/home/Categories";
 import ClientLogos from "@/components/modules/home/ClientLogos";
-import FeaturedJobs from "@/components/modules/home/FeaturedJobs/FeaturedJobsList";
+import FeaturedJobsList from "@/components/modules/home/FeaturedJobs/FeaturedJobsList";
 import HeroSection from "@/components/modules/home/HeroSection";
-import LatestJobs from "@/components/modules/home/LatestJobs/LatestJobsList";
+import LatestJobsList from "@/components/modules/home/LatestJobs/LatestJobsList";
 import PromoBanner from "@/components/modules/home/PromoBanner";
 
 export default async function HomePage() {
@@ -12,8 +12,8 @@ export default async function HomePage() {
       <ClientLogos />
       <Categories />
       <PromoBanner />
-      <FeaturedJobs />
-      <LatestJobs />
+      <FeaturedJobsList />
+      <LatestJobsList />
     </main>
   );
 }

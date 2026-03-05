@@ -76,7 +76,7 @@ export default function ApplyJobForm({ jobId }: { jobId: string }) {
         </label>
         <input
           name="resumeLink"
-          type="text"
+          type="url"
           placeholder="https://example.com/my-resume.pdf"
           required
           disabled={isPending}

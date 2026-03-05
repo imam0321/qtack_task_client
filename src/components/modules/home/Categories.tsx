@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
+import { getAllJobs } from "@/services/job/job";
 
 const categories = [
   { name: "Design", jobs: 235, icon: "/icons/pen.svg" },
@@ -12,7 +13,9 @@ const categories = [
   { name: "Human Resource", jobs: 346, icon: "/icons/users.svg" },
 ];
 
-export default function Categories() {
+export default async function Categories() {
+  const jobs = await getAllJobs();
+
   return (
     <section className="lg:px-31 px-4 md:my-12 my-6">
       {/* Header */}
@@ -22,7 +25,7 @@ export default function Categories() {
         </h2>
         {/* Link */}
         <Link
-          href="#"
+          href="/find-jobs"
           className="text-[#4640DE] font-semibold md:flex items-center md:mt-2 hidden"
         >
           Show all jobs
@@ -48,8 +51,8 @@ export default function Categories() {
           <div
             key={index}
             className={`md:p-8 p-4 border ${cat.active
-                ? "bg-[#4640DE] text-white border-[#4640DE]"
-                : "bg-white text-[#25324B] border-[#D6DDEB]"
+              ? "bg-[#4640DE] text-white border-[#4640DE]"
+              : "bg-white text-[#25324B] border-[#D6DDEB]"
               }`}
           >
             {/* Mobile: flex row (icon + text + arrow), Desktop: flex-col */}
@@ -110,7 +113,7 @@ export default function Categories() {
       {/* Mobile-only Link */}
       <div className="sm:hidden mt-6">
         <Link
-          href="#"
+          href="/find-jobs"
           className="text-[#4640DE] font-semibold flex justify-start items-center"
         >
           Show all jobs
