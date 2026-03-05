@@ -85,18 +85,13 @@ export const loginUser = async (
 
     await setCookie("accessToken", accessTokenObject.accessToken, {
       httpOnly: true,
-      secure: true,
-      sameSite: "none",
-      maxAge: parseInt(accessTokenObject["Max-Age"]) || 60 * 60 * 24,
-      path: accessTokenObject.Path || "/",
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "lax",
     });
 
-    const verifyToken: JwtPayload | string = jwt.verify(
-      accessTokenObject.accessToken,
-      process.env.JWT_ACCESS_SECRET as string,
-    );
+    const verifyToken = jwt.decode(accessTokenObject.accessToken) as JwtPayload;
 
-    if (typeof verifyToken === "string") {
+    if (!verifyToken) {
       return {
         success: false,
         message: "Authentication failed. Please try again.",
